@@ -4,7 +4,6 @@ import { InferType, object, string } from "yup";
 import InputError from "./InputError";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
-// import useAuth from "../hooks/useAuth";
 import { AuthContext } from "../providers/AuthProvider";
 
 const loginSchema = object().shape({
@@ -81,7 +80,7 @@ function LoginForm() {
         <input
           className="bg-white text-black p-3 hover:text-white hover:bg-gray-800 cursor-pointer"
           type="submit"
-          placeholder="Login"
+          value="Login"
         />
       </form>
     </div>

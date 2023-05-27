@@ -9,7 +9,7 @@ function App() {
   const { auth } = useContext(AuthContext);
 
   return (
-    <>
+    <main>
       <Nav />
       <Routes>
         <Route path="/" element={<Breeds />} />
@@ -17,7 +17,7 @@ function App() {
       </Routes>
 
       {!auth && <Navigate to="/login" />}
-    </>
+    </main>
   );
 }
 
