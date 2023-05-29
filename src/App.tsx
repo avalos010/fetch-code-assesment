@@ -5,10 +5,11 @@ import Nav from "./components/Nav";
 import { useContext } from "react";
 import { AuthContext } from "./providers/AuthProvider";
 import FilterSidebar from "./components/FilterSidebar";
+import useParams from "./hooks/useParams";
 
 function App() {
   const { auth } = useContext(AuthContext);
-
+  const { searchParams } = useParams();
   return (
     <main>
       <Nav />
@@ -20,7 +21,11 @@ function App() {
         </Routes>
       </div>
 
-      {!auth && <Navigate to="/login" />}
+      {!auth && (
+        <Navigate
+          to={{ pathname: "/login", search: searchParams.toString() }}
+        />
+      )}
     </main>
   );
 }

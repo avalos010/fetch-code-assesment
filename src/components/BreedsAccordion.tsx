@@ -9,11 +9,11 @@ function BreedsAcccordion() {
 
   const handleCheckboxChange = (breed: string) => {
     if (checked.includes(breed)) {
-      removeKeyValue("breed", breed);
-      return;
+      //check if the box is checked
+      removeKeyValue("breed", breed); //remove it
+    } else {
+      append("breed", breed); //if its not checked than that means it should be appended.
     }
-    append("breed", breed);
-    return;
   };
 
   return (
@@ -21,7 +21,7 @@ function BreedsAcccordion() {
       <Accordion title="Breeds">
         <div className="flex flex-col items-baseline p-4 gap-2 bg-slate-300 relative">
           <input
-            className="p-2 mt-2 mb-4"
+            className="p-4 mt-2 mb-4 w-full"
             placeholder="filter breeds."
             alt="breeds filter textbox"
             aria-label="breeds filter textbox"

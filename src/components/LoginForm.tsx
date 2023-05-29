@@ -5,6 +5,7 @@ import InputError from "./InputError";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import useParams from "../hooks/useParams";
 
 const loginSchema = object().shape({
   email: string().email().required("Email is required"),
@@ -15,6 +16,7 @@ type LoginFormValues = InferType<typeof loginSchema>;
 
 function LoginForm() {
   const navigate = useNavigate();
+  const { searchParams } = useParams();
   const { auth, handleLogin: loginHandler } = useContext(AuthContext);
   const {
     register,
@@ -37,9 +39,9 @@ function LoginForm() {
 
   useEffect(() => {
     if (auth) {
-      navigate("/");
+      navigate({ pathname: "/", search: searchParams.toString() });
     }
-  }, [auth, navigate]);
+  }, [auth, navigate, searchParams]);
 
   return (
     <div className=" w-full flex justify-center items-center h-screen">

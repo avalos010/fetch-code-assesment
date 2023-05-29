@@ -39,3 +39,11 @@ export async function searchDogs(searchParamsURL: string) {
   const res = await instance.get(`/dogs/search${searchParamsURL}`);
   return res;
 }
+export async function verifyZipcode(zip: number) {
+  const res = instance.post(`/locations`, {
+    zip,
+  });
+
+  console.log(res, "location");
+  return res;
+}
