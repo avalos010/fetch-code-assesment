@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { get } from "react-hook-form";
 
 const instance = axios.create({
   baseURL: "https://frontend-take-home-service.fetch.com",
@@ -34,7 +35,7 @@ export async function isAuthenticated() {
   return true;
 }
 
-export async function searchDogs(searchParams: URLSearchParams) {
+export async function getDogsIds(searchParams: URLSearchParams) {
   const url = new URL("/dogs/search", instance.defaults.baseURL);
 
   searchParams.getAll("breed").forEach((breed) => {
@@ -52,6 +53,15 @@ export async function searchDogs(searchParams: URLSearchParams) {
   });
 
   const res = await instance.get(decodeURIComponent(url.toString()));
-  console.log(res);
+  return res;
+}
+
+export async function getDogs(ids: string[]) {
+  const res = instance.post("/dogs", ids);
+  return res;
+}
+
+export async function fetchPage(url: string) {
+  const res = await instance.get(url);
   return res;
 }

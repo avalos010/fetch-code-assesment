@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { searchDogs } from "../api";
+import { getDogsIds, getDogs } from "../api";
 
 function useDogsSearch(searchParams: URLSearchParams) {
   const [dogs, setDogs] = useState([]);
 
   useEffect(() => {
-    const getDogs = async () => {
-      const dogs = searchDogs(searchParams);
+    const fetchDogs = async () => {
+      const dogsIds = (await getDogsIds(searchParams)).data;
+      const dogs = (await getDogs(dogsIds.resultIds)).data;
+      setDogs(dogs);
     };
 
-    getDogs();
+    fetchDogs();
   }, [searchParams]);
 
   return { dogs };
