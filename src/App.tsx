@@ -4,6 +4,7 @@ import Breeds from "./components/Breeds";
 import Nav from "./components/Nav";
 import { useContext } from "react";
 import { AuthContext } from "./providers/AuthProvider";
+import FilterSidebar from "./components/FilterSidebar";
 
 function App() {
   const { auth } = useContext(AuthContext);
@@ -11,10 +12,13 @@ function App() {
   return (
     <main>
       <Nav />
-      <Routes>
-        <Route path="/" element={<Breeds />} />
-        <Route path="/login" element={<LoginForm />} />
-      </Routes>
+      <div className="flex flex-row gap-5">
+        {auth && <FilterSidebar />}
+        <Routes>
+          <Route path="/" element={<Breeds />} />
+          <Route path="/login" element={<LoginForm />} />
+        </Routes>
+      </div>
 
       {!auth && <Navigate to="/login" />}
     </main>

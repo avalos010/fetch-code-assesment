@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
   baseURL: "https://frontend-take-home-service.fetch.com",
@@ -18,7 +18,7 @@ export async function logout() {
   return res;
 }
 
-export async function getBreeds() {
+export async function getBreeds(): Promise<AxiosResponse<string[]>> {
   const res = await instance.get("/dogs/breeds");
   return res;
 }
@@ -32,4 +32,10 @@ export async function isAuthenticated() {
   }
 
   return true;
+}
+
+export async function searchDogs(searchParamsURL: string) {
+  console.log(searchParamsURL);
+  const res = await instance.get(`/dogs/search${searchParamsURL}`);
+  return res;
 }

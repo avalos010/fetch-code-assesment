@@ -1,7 +1,7 @@
 function Breeds() {
   return (
     <div>
-      <h2>Breeds</h2>
+      <h1>Breeds</h1>
     </div>
   );
 }
