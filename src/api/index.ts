@@ -51,6 +51,10 @@ export async function getDogsIds(searchParams: URLSearchParams) {
     url.searchParams.append("zipCodes", zipCode);
   });
 
+  if (searchParams.get("sort") !== null && searchParams.get("sort")) {
+    url.searchParams.append("sort", searchParams.get("sort") as string);
+  }
+
   const res = await instance.get(decodeURIComponent(url.toString()));
   return res;
 }
