@@ -8,10 +8,15 @@ function Breeds() {
 
   return (
     <div>
-      <h1>Breeds</h1>
+      <div className="flex flex-row gap-4 mt-10 flex-wrap justify-around">
+        {dogs.map((dog) => {
+          return <DogCard key={dog.id} dog={dog} />;
+        })}
+      </div>
     </div>
   );
 }
 import useParams from "../hooks/useParams";
+import DogCard from "./DogCard";
 
 export default Breeds;

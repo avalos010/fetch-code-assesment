@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 import { getDogsIds, getDogs } from "../api";
 
+export type Dog = {
+  id: string;
+  img: string;
+  name: string;
+  age: number;
+  zip_code: string;
+  breed: string;
+};
+
 function useDogsSearch(searchParams: URLSearchParams) {
-  const [dogs, setDogs] = useState([]);
+  const [dogs, setDogs] = useState<Dog[]>([]);
 
   useEffect(() => {
     const fetchDogs = async () => {
