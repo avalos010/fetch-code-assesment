@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { get } from "react-hook-form";
 
 const instance = axios.create({
   baseURL: "https://frontend-take-home-service.fetch.com",

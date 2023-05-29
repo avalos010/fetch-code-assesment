@@ -2,9 +2,11 @@ import useDogsSearch from "../hooks/useDogsSearch";
 
 function Breeds() {
   const { searchParams } = useParams();
-  const { dogs } = useDogsSearch(searchParams);
+  const { dogs, isLoading } = useDogsSearch(searchParams);
 
-  console.log(dogs, "breeds");
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
@@ -18,5 +20,6 @@ function Breeds() {
 }
 import useParams from "../hooks/useParams";
 import DogCard from "./DogCard";
+import Spinner from "./Spinner";
 
 export default Breeds;

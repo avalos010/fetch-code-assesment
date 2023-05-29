@@ -8,6 +8,7 @@ function DogCard({
   return (
     <div key={id} className="p-4 shadow-md shadow-slate-500">
       <h2 className="text-3xl">{name}</h2>
+      <h3 className="text-xl text-slate-700">{breed}</h3>
       <img
         className="mt-4"
         width={250}
