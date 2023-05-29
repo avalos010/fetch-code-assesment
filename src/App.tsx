@@ -13,7 +13,7 @@ function App() {
   return (
     <main>
       <Nav />
-      <div className="flex flex-row gap-5">
+      <div className="flex flex-row gap-5 flex-wrap">
         {auth && <FilterSidebar />}
         <Routes>
           <Route path="/" element={<Breeds />} />
