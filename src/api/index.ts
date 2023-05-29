@@ -34,16 +34,24 @@ export async function isAuthenticated() {
   return true;
 }
 
-export async function searchDogs(searchParamsURL: string) {
-  console.log(searchParamsURL);
-  const res = await instance.get(`/dogs/search${searchParamsURL}`);
-  return res;
-}
-export async function verifyZipcode(zip: number) {
-  const res = instance.post(`/locations`, {
-    zip,
+export async function searchDogs(searchParams: URLSearchParams) {
+  const url = new URL("/dogs/search", instance.defaults.baseURL);
+
+  searchParams.getAll("breed").forEach((breed) => {
+    if (!url.searchParams.has("breeds")) {
+      url.searchParams.set("breeds", breed);
+    }
+    url.searchParams.append("breeds", breed);
   });
 
-  console.log(res, "location");
+  searchParams.getAll("zipCode").forEach((zipCode) => {
+    if (!url.searchParams.has("zipCodes")) {
+      url.searchParams.set("zipCodes", zipCode);
+    }
+    url.searchParams.append("zipCodes", zipCode);
+  });
+
+  const res = await instance.get(decodeURIComponent(url.toString()));
+  console.log(res);
   return res;
 }

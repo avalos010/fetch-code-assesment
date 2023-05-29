@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
-import { searchDogs } from "../api";
+// import { useEffect, useState } from "react";
+// import { searchDogs } from "../api";
 
-function useResults(breeds: string[]) {
-  const [results, setResults] = useState<any>([]);
+// function useResults(breeds: string[]) {
+//   const [results, setResults] = useState<any>([]);
 
-  useEffect(() => {
-    const getBreeds = async () => {
-      const searchResults = await searchDogs("");
+//   useEffect(() => {
+//     const getBreeds = async () => {
+//       const searchResults = await searchDogs("");
 
-      setResults(searchResults.data);
-    };
+//       setResults(searchResults.data);
+//     };
 
-    getBreeds();
-  }, []);
+//     getBreeds();
+//   }, []);
 
-  return { results };
-}
+//   return { results };
+// }
 
-export default useResults;
+// export default useResults;
