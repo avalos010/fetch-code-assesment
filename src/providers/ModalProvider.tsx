@@ -16,7 +16,6 @@ function ModalProvider({ children }: { children: ReactNode }) {
   const [component, setComponent] = useState<ReactNode | null>(null);
 
   function openModal(component: ReactNode) {
-    console.log("woo");
     setComponent(component);
     setIsOpen(true);
   }

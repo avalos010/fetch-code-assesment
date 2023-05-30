@@ -20,21 +20,24 @@ function Breeds() {
     setSelected((prev) => prev.filter((item) => item.id !== dog.id));
   };
 
-  useEffect(() => {
-    if (selected.length === 0) {
-      closeModal();
-    }
-  }, [selected]);
-
   return (
     <div className="w-full">
       {selected.length > 0 ? (
-        <button
-          className="bg-black text-white p-4 mx-auto block"
-          onClick={() => openModal(<SelectedBreeds selected={selected} />)}
-        >
-          Show Selected ({selected.length})
-        </button>
+        <div className="flex flex-row justify-center gap-2">
+          <button
+            className="bg-black text-white p-4"
+            onClick={() => openModal(<SelectedBreeds selected={selected} />)}
+          >
+            Show Selected ({selected.length})
+          </button>
+
+          <button
+            className="bg-black text-white p-4"
+            // onClick={() => openModal(<SelectedBreeds selected={selected} />)}
+          >
+            Get Match
+          </button>
+        </div>
       ) : null}
 
       {isLoading ? <Spinner /> : null}
