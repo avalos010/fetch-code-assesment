@@ -77,3 +77,8 @@ function addToDogsSearchParams(searchParams: URLSearchParams) {
 
   return url;
 }
+
+export function getMatch(ids: string[]) {
+  const res = instance.post("/dogs/match", ids);
+  return res;
+}

@@ -7,7 +7,8 @@ function DogCard({
   handleUnselect,
   selectedItems,
 }: DogCardProps) {
-  const isSelected = selectedItems.some((item) => dog.id === item.id);
+  const isSelected =
+    selectedItems && selectedItems.some((item) => dog.id === item.id);
 
   const handleToggleSelect = () => {
     if (isSelected) {
@@ -52,5 +53,5 @@ type DogCardProps = {
   dog: Dog;
   handleUnselect?: (dog: Dog) => void;
   handleSelect?: (dog: Dog) => void;
-  selectedItems: Dog[];
+  selectedItems?: Dog[];
 };

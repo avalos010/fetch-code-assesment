@@ -6,6 +6,7 @@ import SortingMenu from "./SortingMenu";
 import Spinner from "./Spinner";
 import { ModalContext } from "../providers/ModalProvider";
 import SelectedBreeds from "./SelectedBreeds";
+import Match from "./Match";
 
 function Breeds() {
   const { dogs, isLoading } = useDogsSearch();
@@ -33,7 +34,7 @@ function Breeds() {
 
           <button
             className="bg-black text-white p-4"
-            // onClick={() => openModal(<SelectedBreeds selected={selected} />)}
+            onClick={() => openModal(<Match dogs={selected} />)}
           >
             Get Match
           </button>
