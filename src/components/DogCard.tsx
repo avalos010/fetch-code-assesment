@@ -2,17 +2,18 @@ import { Dog } from "../hooks/useDogsSearch";
 
 function DogCard({
   dog: { id, name, breed, age, zip_code, img },
+  dog,
   handleSelect,
   handleUnselect,
   selectedItems,
 }: DogCardProps) {
-  const isSelected = selectedItems.includes(id);
+  const isSelected = selectedItems.some((item) => dog.id === item.id);
 
   const handleToggleSelect = () => {
     if (isSelected) {
-      handleUnselect(id);
+      handleUnselect && handleUnselect(dog);
     } else {
-      handleSelect(id);
+      handleSelect && handleSelect(dog);
     }
   };
 
@@ -31,14 +32,16 @@ function DogCard({
         <p className="text-slate-700 font-semibold">Age: {age}</p>
         <p>location: {zip_code}</p>
       </div>
-      <button
-        onClick={handleToggleSelect}
-        className={`${
-          isSelected ? "bg-slate-200 text-black" : "bg-black text-white"
-        } w-full absolute bottom-0 left-0 right-0`}
-      >
-        {isSelected ? "Unselect" : "Select"}
-      </button>
+      {handleSelect && handleUnselect && (
+        <button
+          onClick={handleToggleSelect}
+          className={`${
+            isSelected ? "bg-slate-200 text-black" : "bg-black text-white"
+          } w-full absolute bottom-0 left-0 right-0`}
+        >
+          {isSelected ? "Unselect" : "Select"}
+        </button>
+      )}
     </div>
   );
 }
@@ -47,8 +50,7 @@ export default DogCard;
 
 type DogCardProps = {
   dog: Dog;
-  handleUnselect: (id: string) => void;
-
-  handleSelect: (id: string) => void;
-  selectedItems: string[];
+  handleUnselect?: (dog: Dog) => void;
+  handleSelect?: (dog: Dog) => void;
+  selectedItems: Dog[];
 };

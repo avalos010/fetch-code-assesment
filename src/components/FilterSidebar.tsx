@@ -18,7 +18,7 @@ function FilterSidebar() {
         <AdjustmentsHorizontalIcon width={50} />
       </button>
       <aside
-        className={`flex flex-col w-max top-0 h-[1000px] fixed bg-slate-400 p-6 gap-8 transition-all ${
+        className={`flex flex-col w-max top-0 h-[1000px] fixed bg-slate-400 z-10 p-6 gap-8 transition-all ${
           isOpen ? "left-0" : "left-[-1000px]"
         }`}
       >

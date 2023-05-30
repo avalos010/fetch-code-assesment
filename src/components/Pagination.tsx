@@ -11,6 +11,7 @@ function Pagination() {
     searchParams.delete("from");
     setCurrentPage(page.selected + 1);
     append("from", (page.selected * 25).toString());
+    window.scrollTo(0, 0);
   }
 
   useEffect(() => {
@@ -29,9 +30,10 @@ function Pagination() {
           pageClassName="p-4"
           forcePage={currentPage}
           activeClassName="bg-black text-white"
-          className="flex flex-row gap-2 bg-slate-200 items-center justify-center mt-5"
+          className="flex flex-row gap-2 bg-slate-200 items-center justify-center mt-5 flex-wrap w-72 mx-auto sm:w-full"
           pageCount={pageCount}
           onPageChange={handlePageChange}
+          marginPagesDisplayed={2}
         />
       </>
     );
