@@ -31,7 +31,7 @@ function DogCard({
 
       <div className=" flex flex-col align-bottom justify-end mb-5">
         <p className="text-slate-700 font-semibold">Age: {age}</p>
-        <p>location: {zip_code}</p>
+        <p>ZipCode: {zip_code}</p>
       </div>
       {handleSelect && handleUnselect && (
         <button

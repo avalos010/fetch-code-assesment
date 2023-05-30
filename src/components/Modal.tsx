@@ -7,10 +7,10 @@ function Modal() {
 
   if (isOpen) {
     return (
-      <div className="flex z-50 fixed top-0 w-full h-screen items-center justify-center bg-black/80 ">
+      <div className="flex flex-col z-50 fixed top-0 bottom-0 w-full items-center justify-center bg-black/80 overflow-scroll">
         <button
           onClick={closeModal}
-          className="absolute top-0 right-4 text-slate-100"
+          className="absolute top-0 right-0 sm:right-4 z-10 text-slate-100"
         >
           <XMarkIcon width={50} />
         </button>

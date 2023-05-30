@@ -3,9 +3,9 @@ import DogCard from "./DogCard";
 
 function SelectedBreeds({ selected }: SelectedBreedsProps) {
   return (
-    <div className="bg-white p-3 max-w-[80%] h-max overflow-y-scroll">
+    <div className="bg-white p-3 max-w-[80%] overflow-scroll">
       <h3 className="text-3xl m-3">Selected Breeds</h3>
-      <div className="flex flex-row flex-wrap gap-3">
+      <div className="flex flex-row flex-wrap gap-3 justify-center">
         {selected.map((dog) => (
           <DogCard selectedItems={selected} key={dog.id} dog={dog} />
         ))}
