@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import useDogsSearch, { Dog } from "../hooks/useDogsSearch";
 import DogCard from "./DogCard";
 import Pagination from "./Pagination";
@@ -11,7 +11,7 @@ import Match from "./Match";
 function Breeds() {
   const { dogs, isLoading } = useDogsSearch();
   const [selected, setSelected] = useState<Dog[]>([]);
-  const { openModal, closeModal } = useContext(ModalContext);
+  const { openModal } = useContext(ModalContext);
 
   const handleSelect = (dog: Dog) => {
     setSelected((prev) => [dog, ...prev]);
