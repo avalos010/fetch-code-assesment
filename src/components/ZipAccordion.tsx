@@ -3,7 +3,7 @@ import Accordion from "./Accordion";
 import useParams from "../hooks/useParams";
 function ZipAccordion() {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const { append, removeKeyValue, searchParams } = useParams();
+  const { append, removeKeyValue, searchParams, resetPagination } = useParams();
 
   const zips = searchParams.getAll("zipCode");
 
@@ -14,6 +14,7 @@ function ZipAccordion() {
       if (!url.includes(`zipCode=${value}`)) {
         //only append if the exact zip is not already included
         append("zipCode", value);
+        resetPagination();
       }
     }
   }

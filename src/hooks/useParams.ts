@@ -10,10 +10,16 @@ function useParams() {
 
   function removeKeyValue(key: string, value: string) {
     const val = value.replaceAll(" ", "+");
-    setSearchParams(searchParams.toString().replace(`${key}=${val}`, ""));
+    const params = searchParams.toString().replace(`${key}=${val}`, "");
+    setSearchParams(params);
   }
 
-  return { searchParams, append, removeKeyValue };
+  function resetPagination() {
+    searchParams.delete("from");
+    setSearchParams(searchParams);
+  }
+
+  return { searchParams, append, removeKeyValue, resetPagination };
 }
 
 export default useParams;

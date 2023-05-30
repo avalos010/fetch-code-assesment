@@ -35,6 +35,22 @@ export async function isAuthenticated() {
 }
 
 export async function getDogsIds(searchParams: URLSearchParams) {
+  const url = addToDogsSearchParams(searchParams);
+  const res = await instance.get(decodeURIComponent(url.toString()));
+  return res;
+}
+
+export async function getDogs(ids: string[]) {
+  const res = instance.post("/dogs", ids);
+  return res;
+}
+
+export async function fetchPage(url: string) {
+  const res = await instance.get(url);
+  return res;
+}
+
+function addToDogsSearchParams(searchParams: URLSearchParams) {
   const url = new URL("/dogs/search", instance.defaults.baseURL);
 
   searchParams.getAll("breed").forEach((breed) => {
@@ -55,16 +71,9 @@ export async function getDogsIds(searchParams: URLSearchParams) {
     url.searchParams.append("sort", searchParams.get("sort") as string);
   }
 
-  const res = await instance.get(decodeURIComponent(url.toString()));
-  return res;
-}
+  if (searchParams.get("from")) {
+    url.searchParams.append("from", searchParams.get("from") as string);
+  }
 
-export async function getDogs(ids: string[]) {
-  const res = instance.post("/dogs", ids);
-  return res;
-}
-
-export async function fetchPage(url: string) {
-  const res = await instance.get(url);
-  return res;
+  return url;
 }

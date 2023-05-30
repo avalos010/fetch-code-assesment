@@ -4,7 +4,7 @@ import Accordion from "./Accordion";
 
 function BreedsAcccordion() {
   const { breeds, filterBreeds } = useBreeds();
-  const { append, removeKeyValue, searchParams } = useParams();
+  const { append, removeKeyValue, searchParams, resetPagination } = useParams();
   const checked = searchParams.getAll("breed");
 
   const handleCheckboxChange = (breed: string) => {
@@ -14,6 +14,7 @@ function BreedsAcccordion() {
     } else {
       append("breed", breed); //if its not checked than that means it should be appended.
     }
+    resetPagination();
   };
 
   return (

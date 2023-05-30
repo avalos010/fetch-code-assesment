@@ -6,8 +6,11 @@ function SortingMenu() {
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sort = event.target.value;
     searchParams.delete("sort");
+    searchParams.delete("from"); //reset pagination
+    console.log("should delete pagination");
     append("sort", sort);
   };
+
   return (
     <div className="flex justify-end m-5 p-4">
       <label htmlFor="sort">Sort:</label>

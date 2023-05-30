@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getDogsIds, getDogs } from "../api";
+import useParams from "../hooks/useParams";
 
 export type Dog = {
   id: string;
@@ -10,14 +11,17 @@ export type Dog = {
   breed: string;
 };
 
-function useDogsSearch(searchParams: URLSearchParams) {
+function useDogsSearch() {
+  const { searchParams } = useParams();
   const [dogs, setDogs] = useState<Dog[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [totalResults, setTotalResults] = useState(0);
 
   useEffect(() => {
     const fetchDogs = async () => {
       setIsLoading(true);
       const dogsIds = (await getDogsIds(searchParams)).data;
+      setTotalResults(dogsIds.total);
       const dogs = (await getDogs(dogsIds.resultIds)).data;
       setDogs(dogs);
       setIsLoading(false);
@@ -26,7 +30,7 @@ function useDogsSearch(searchParams: URLSearchParams) {
     fetchDogs();
   }, [searchParams]);
 
-  return { dogs, isLoading };
+  return { dogs, isLoading, totalResults };
 }
 
 export default useDogsSearch;
