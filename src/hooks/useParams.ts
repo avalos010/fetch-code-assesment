@@ -9,9 +9,11 @@ function useParams() {
   }
 
   function removeKeyValue(key: string, value: string) {
-    const val = value.replaceAll(" ", "+");
-    const params = searchParams.toString().replace(`${key}=${val}`, "");
-    setSearchParams(params);
+    //it works to remove exact key:value pairs from searchparams
+    const toAddBack = searchParams.getAll(key).filter((val) => val !== value);
+    searchParams.delete(key);
+    toAddBack.forEach((val) => searchParams.append(key, val));
+    setSearchParams(searchParams);
   }
 
   function resetPagination() {

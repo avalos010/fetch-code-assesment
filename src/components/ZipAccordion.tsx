@@ -7,15 +7,16 @@ function ZipAccordion() {
 
   const zips = searchParams.getAll("zipCode");
 
-  function validateZip() {
+  function addZip() {
     if (inputRef.current) {
       const value = inputRef.current.value;
       const url = searchParams.toString();
       if (!url.includes(`zipCode=${value}`)) {
-        //only append if the exact zip is not already included
+        //only append if the exact zip is not already included in the searchparams
         append("zipCode", value);
         resetPagination();
       }
+      inputRef.current.value = "";
     }
   }
 
@@ -35,7 +36,7 @@ function ZipAccordion() {
           />
           <button
             className="absolute right-[30px] top-0 bottom-0 text-xl"
-            onClick={validateZip}
+            onClick={addZip}
           >
             +
           </button>
