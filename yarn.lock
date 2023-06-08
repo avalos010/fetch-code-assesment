@@ -1716,6 +1716,7 @@ __metadata:
     typescript: ^5.0.2
     vite: ^4.3.2
     yup: ^1.2.0
+    zip-state: ^1.0.3
   languageName: unknown
   linkType: soft
 
@@ -3595,5 +3596,12 @@ __metadata:
     toposort: ^2.0.2
     type-fest: ^2.19.0
   checksum: f0cdceb144e358c6155670f3e27404b65b090cc12594fde6db2699523661e13542aaf87ebe8e542b67f29a5f3f9bc5f23a3a3bb09e17f10d125353d35b841fac
+  languageName: node
+  linkType: hard
+
+"zip-state@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "zip-state@npm:1.0.3"
+  checksum: 9e899812a54ad42d09cebe3ac6024b0ee06515a591b184699ed81cccaac72bbfd8b96858b7e036e2bdebf0000f4813fbf796b9300b766777ae4f39c9adca3ef3
   languageName: node
   linkType: hard

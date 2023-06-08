@@ -1,4 +1,5 @@
 import { Dog } from "../hooks/useDogsSearch";
+import zipState from "zip-state";
 
 function DogCard({
   dog: { id, name, breed, age, zip_code, img },
@@ -18,10 +19,18 @@ function DogCard({
     }
   };
 
+  const location = zipState(zip_code);
+
   return (
     <div key={id} className="p-4 shadow-md shadow-slate-500 relative">
       <h2 className="text-3xl">{name}</h2>
       <h3 className="text-xl text-slate-700">{breed}</h3>
+      <div className=" flex flex-col flex-wrap justify-around align-bottom mb-5 font-medium text-lg">
+        <p>{age} years old</p>
+        <p>
+          {location}, {zip_code}
+        </p>
+      </div>
       <img
         className="mt-4"
         width={250}
@@ -29,10 +38,6 @@ function DogCard({
         alt={`image of a ${breed} named ${name}`}
       />
 
-      <div className=" flex flex-col align-bottom justify-end mb-5">
-        <p className="text-slate-700 font-semibold">Age: {age}</p>
-        <p>ZipCode: {zip_code}</p>
-      </div>
       {handleSelect && handleUnselect && (
         <button
           onClick={handleToggleSelect}
