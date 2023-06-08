@@ -7,8 +7,8 @@ function ZipAccordion() {
 
   const zips = searchParams.getAll("zipCode");
 
-  function addZip() {
-    if (inputRef.current) {
+  function addZip(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (inputRef.current && event.key === "Enter") {
       const value = inputRef.current.value;
       const url = searchParams.toString();
       if (!url.includes(`zipCode=${value}`)) {
@@ -33,13 +33,8 @@ function ZipAccordion() {
             ref={inputRef}
             type="number"
             placeholder="ZipCode"
+            onKeyDown={addZip}
           />
-          <button
-            className="absolute right-[30px] top-0 bottom-0 text-xl"
-            onClick={addZip}
-          >
-            +
-          </button>
         </div>
 
         <div className="flex flex-col p-4 gap-4 ml-3">
