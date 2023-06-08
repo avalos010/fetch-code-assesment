@@ -32,7 +32,7 @@ function DogCard({
         </p>
       </div>
       <img
-        className="mt-4"
+        className="my-4"
         width={250}
         src={img}
         alt={`image of a ${breed} named ${name}`}
