@@ -21,7 +21,6 @@ function Nav() {
 
   return (
     <nav className="bg-black text-white p-4 flex flex-row gap-4">
-      <Link to="/">Breeds</Link>
       <button onClick={handleLogOut}>Logout</button>
     </nav>
   );

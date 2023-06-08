@@ -42,6 +42,7 @@ function Breeds() {
       ) : null}
 
       {isLoading ? <Spinner /> : null}
+      <Pagination />
       <SortingMenu />
       <div className="flex flex-row gap-4 mx-auto flex-wrap justify-center">
         {dogs.map((dog) => {
