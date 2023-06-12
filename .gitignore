@@ -25,3 +25,6 @@ dist-ssr
 
 #yarn
 .yarn
+
+#screenshots from cypress
+cypress/screenshots

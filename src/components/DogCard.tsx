@@ -22,7 +22,11 @@ function DogCard({
   const location = zipState(zip_code);
 
   return (
-    <div key={id} className="p-4 shadow-md shadow-slate-500 relative">
+    <div
+      key={id}
+      className="p-4 shadow-md shadow-slate-500 relative"
+      data-cy="dog-card"
+    >
       <h2 className="text-3xl">{name}</h2>
       <h3 className="text-xl text-slate-700">{breed}</h3>
       <div className=" flex flex-col flex-wrap justify-around align-bottom mb-5 font-medium text-lg">
