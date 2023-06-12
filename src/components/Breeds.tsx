@@ -7,6 +7,7 @@ import Spinner from "./Spinner";
 import { ModalContext } from "../providers/ModalProvider";
 import SelectedBreeds from "./SelectedBreeds";
 import Match from "./Match";
+import Chips from "./Chips";
 
 function Breeds() {
   const { dogs, isLoading } = useDogsSearch();
@@ -23,6 +24,7 @@ function Breeds() {
 
   return (
     <div className="w-full">
+      <Chips />
       {selected.length > 0 ? (
         <div className="flex flex-row justify-center gap-2">
           <button
