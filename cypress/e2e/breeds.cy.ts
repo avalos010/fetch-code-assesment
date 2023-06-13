@@ -13,10 +13,18 @@ describe("breeds", () => {
   });
 
   it("breed filters being applied show up as chips", () => {
-    cy.get('[data-cy="filter-icon"]', { timeout: 3000 }).click();
-    cy.get('[ data-cy="Breeds-accordion"]').click();
-    cy.get('[type="checkbox"]').check("Airedale");
-
+    selectBreedFromFilters();
     cy.get('[data-cy="Airedale-chip"]').should("be.visible");
   });
+
+  it("breed filters being applied show up on the URL", () => {
+    selectBreedFromFilters();
+    cy.url().should("include", "breed=Airedale");
+  });
 });
+
+function selectBreedFromFilters() {
+  cy.get('[data-cy="filter-icon"]', { timeout: 3000 }).click();
+  cy.get('[ data-cy="Breeds-accordion"]').click();
+  cy.get('[type="checkbox"]').check("Airedale");
+}
