@@ -3,7 +3,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 function Chip({ name, onRemove }: ChipProps) {
   return (
     <div className="rounded-md border-[1px] border-black p-2 m-1 flex flex-row">
-      <p>{name}</p>
+      <p data-cy={`${name}-chip`}>{name}</p>
       <XMarkIcon
         onClick={onRemove}
         width={20}

@@ -5,10 +5,11 @@ function Accordion({ children, title }: AccordionProps) {
   return (
     <div className="">
       <div
+        data-cy={`${title}-accordion`}
         className="flex flex-row justify-between bg-slate-300 p-4"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="cursor-pointer ">{title}</h3>
+        <h3 className="cursor-pointer">{title}</h3>
         <button className="text-xl">{isOpen ? "-" : "+"}</button>
       </div>
       <div

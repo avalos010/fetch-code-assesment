@@ -1,5 +1,5 @@
 describe("breeds", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/");
 
     cy.get("input[name=email]").type("test@test.com");
@@ -8,11 +8,15 @@ describe("breeds", () => {
     cy.location("pathname").should("equal", "/");
   });
 
-  beforeEach(() => {
-    cy.visit("/");
-  });
-
   it("shows the breeds", () => {
     cy.get('[data-cy="dog-card"]').should("be.visible");
+  });
+
+  it("breed filters being applied show up as chips", () => {
+    cy.get('[data-cy="filter-icon"]', { timeout: 3000 }).click();
+    cy.get('[ data-cy="Breeds-accordion"]').click();
+    cy.get('[type="checkbox"]').check("Airedale");
+
+    cy.get('[data-cy="Airedale-chip"]').should("be.visible");
   });
 });

@@ -13,6 +13,7 @@ function FilterSidebar() {
     <div className="">
       <button
         onClick={() => setIsOpen(true)}
+        data-cy="filter-icon"
         className="mt-4 hover:text-slate-400"
       >
         <AdjustmentsHorizontalIcon width={50} />
