@@ -1,4 +1,4 @@
-describe.only("breeds", () => {
+describe("breeds", () => {
   before(() => {
     cy.visit("/");
 
@@ -8,8 +8,11 @@ describe.only("breeds", () => {
     cy.location("pathname").should("equal", "/");
   });
 
-  it("shows the breeds", () => {
+  beforeEach(() => {
     cy.visit("/");
+  });
+
+  it("shows the breeds", () => {
     cy.get('[data-cy="dog-card"]').should("be.visible");
   });
 });
